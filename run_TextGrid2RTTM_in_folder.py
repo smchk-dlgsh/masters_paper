@@ -11,7 +11,7 @@ def process_files_in_folder(folder_path):
             os.system(f"python textgrid2rttm.py {textgrid_file} {output_file}")
 
 # Specify the folder path
-folder_path = "/Users/valeriia/stuff/STUDYING/YEAR_6/masters_degree/paired_plain_data"
+folder_path = "/Users/valeriia/stuff/STUDYING/YEAR_6/masters_degree/textGrids_to_be_converted_into_RTTM"
 
 # Call the process_files_in_folder function
 process_files_in_folder(folder_path)

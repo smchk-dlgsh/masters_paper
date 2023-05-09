@@ -48,9 +48,6 @@ def textgrid2rttm(textgrid):
                               interval.end_time,\
                               interval.text
 
-                print('bg', bg)
-                print('dur', ed-bg)
-                print('label', label)
                 if label == "x":
                    continue
         
@@ -71,9 +68,6 @@ def write_rttm(rttm_out, basename_whole):
     with open(basename_whole + '.rttm', 'w') as fout:
         for spkr in rttm_out:
             for bg, dur, label in rttm_out[spkr]:
-                print('bg', bg)
-                print('dur', dur)
-                print('label written', label)
                 fout.write(u'SPEAKER {} 1 {} {} <NA> <NA> {} <NA>\n'
                            .format(
                     basename_whole.split('/')[-1],

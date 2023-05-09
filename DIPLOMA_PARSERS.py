@@ -144,13 +144,14 @@ def read_file(filepath: str) -> str:
 
 def main() -> None:
     ROOT_DIR = "/Users/valeriia/stuff/STUDYING/YEAR_6/masters_degree"
-    NEMO_DIR = f"{ROOT_DIR}"
-    ANNOTATIONS_DIR = f"{ROOT_DIR}"
+    NEMO_DIR = f"{ROOT_DIR}/rttms_NeMo"
+    ANNOTATIONS_DIR = f"{ROOT_DIR}/rttms_made_of_TextGrids"
 
-    result: dict[str, Any] = {}
+    results: dict[str, list[TextSpeakerRange]] = {}
 
     annotations_filenames = read_filenames_from_flat_directory(ANNOTATIONS_DIR)
     for annotation_filename in annotations_filenames:
+        print('annotation_filename', annotation_filename)
         annotation_file = read_file(f"{ANNOTATIONS_DIR}/{annotation_filename}")
         nemo_file = read_file(f"{NEMO_DIR}/{annotation_filename}")
 
@@ -160,8 +161,27 @@ def main() -> None:
         textspeaker_ranges = merged_speaker_data(nemo_ranges, text_ranges)
 
         filename_without_extension = ".".join(annotation_filename.split(".")[:-1])
-        result[filename_without_extension] = textspeaker_ranges
+        results[filename_without_extension] = textspeaker_ranges
     
-    print(result)
+    def dump_to_json() -> None:
+        dict_data = {}
+        for filename, result in results.items():
+            dict_data[filename] =  {
+                "words": [
+                    {
+                        "started_at": r.started_at_ms / 1_000,
+                        "duration": (r.ended_at_ms / 1_000) - (r.started_at_ms / 1_000),
+                        "speakers": r.speakers,
+                        "text": r.text,
+                    }
+                    for r in result
+                ]
+            }
+
+        from json import dump
+        with open('./OUTPUT.json', 'w', encoding='utf8') as file:
+          dump(dict_data, file, ensure_ascii=False)
+    
+    dump_to_json()
 
 main()
