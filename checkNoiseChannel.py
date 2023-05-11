@@ -18,7 +18,7 @@ for file_name in file_list:
 
     with open(file_path, 'r', encoding=encoding) as file:
       content = file.read().lower()
-      if "noise" in content:
+      if "name = \"noise\"" in content:
         print(f"{file_name} contains 'noise'")
       else:
         print(f"{file_name} does not contain 'noise'")
