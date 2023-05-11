@@ -2,6 +2,9 @@ import os
 import re
 from dataclasses import dataclass
 from typing import Any
+import json
+from json import dump
+
 
 NEMO_OUTPUT = """
 SPEAKER 926315_2022_03_28_17_33_39_2_110 1   8.537   1.092 <NA> <NA> speaker_1 <NA> <NA>
@@ -178,10 +181,19 @@ def main() -> None:
                 ]
             }
 
-        from json import dump
         with open('./OUTPUT.json', 'w', encoding='utf8') as file:
           dump(dict_data, file, ensure_ascii=False)
     
     dump_to_json()
+
+    with open('./OUTPUT.json', 'r', encoding='utf8') as input_file:
+        # Load contents of input file into a Python object
+        json_obj = json.load(input_file)
+
+    json_str = json.dumps(json_obj, indent=4, ensure_ascii=False)
+
+    with open('./beautified_OUTPUT.json', 'w') as output_file:
+        output_file.write(json_str)
+
 
 main()
