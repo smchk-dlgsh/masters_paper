@@ -29,7 +29,7 @@ def textgrid2rttm(textgrid):
 
     # open textgrid
     #tg = tgio.openTextgrid(textgrid)
-    tg = tgt.read_textgrid(textgrid, encoding="utf-16")
+    tg = tgt.read_textgrid(textgrid, encoding="utf-8")
 
  
  
@@ -37,6 +37,9 @@ def textgrid2rttm(textgrid):
     # loop over all speakers in this text grid
     #for spkr in tg.tierNameList:
     for spkr in tg.get_tier_names():
+        print('spkr', spkr)
+        speaker_id = tg.get_tier_names().index(spkr)
+        print('speaker_id', speaker_id)
 
         spkr_timestamps = []
         # loop over all annotations for this speaker
@@ -51,7 +54,7 @@ def textgrid2rttm(textgrid):
                 if label == "x":
                    continue
         
-                spkr_timestamps.append((bg, ed-bg, label))
+                spkr_timestamps.append((bg, ed-bg, label, speaker_id))
 
         # add list of onsets, durations for each speakers
         rttm_out[spkr] = spkr_timestamps
@@ -67,13 +70,13 @@ def write_rttm(rttm_out, basename_whole):
     # only regions of speech, and not the speaker
     with open(basename_whole + '.rttm', 'w') as fout:
         for spkr in rttm_out:
-            for bg, dur, label in rttm_out[spkr]:
+            for bg, dur, label, speaker_id in rttm_out[spkr]:
                 fout.write(u'SPEAKER {} 1 {} {} <NA> <NA> {} <NA>\n'
                            .format(
                     basename_whole.split('/')[-1],
                     bg,
                     dur,
-                    label
+                    basename_whole + '-' + str(speaker_id)
                     ))
 
 
