@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a33c269d-cd02-42a2-bf4e-c6a3eb9d1bc5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/535530_2022_03_15_18-03-35_1-34.TextGrid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/926315_2022_03_28_17_33_39_2_110.TextGrid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/926315_2022_03_28_17_33_39_2_110.rttm" beforeDir="false" afterPath="$PROJECT_DIR$/926315_2022_03_28_17_33_39_2_110.rttm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/926315_2022_03_28_17_33_39_2_110.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkNoiseChannel.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkNoiseChannel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_1_rttm_without_noise.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_1_rttm_without_noise.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dscore/scorelib/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/dscore/scorelib/metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gold_standart.rttm" beforeDir="false" afterPath="$PROJECT_DIR$/gold_standart.rttm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nemo/collections/common/parts/preprocessing/collections.py" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/collections/common/parts/preprocessing/collections.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parse_RTTM_for_simpleDER.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse_RTTM_for_simpleDER.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/removeNoiseChannel.py" beforeDir="false" afterPath="$PROJECT_DIR$/removeNoiseChannel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remove_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/remove_files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remove_without_corresponding.py" beforeDir="false" afterPath="$PROJECT_DIR$/remove_without_corresponding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_TextGrid2RTTM_in_folder.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_TextGrid2RTTM_in_folder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textgrid2rttm.py" beforeDir="false" afterPath="$PROJECT_DIR$/textgrid2rttm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorials/speaker_tasks/Speaker_Diarization_Inference.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/tutorials/speaker_tasks/Speaker_Diarization_Inference.ipynb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PeVKyl1VP6Pm9OYL13Xh4Ux1qQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/valeriia/src/nemo/NeMo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a33c269d-cd02-42a2-bf4e-c6a3eb9d1bc5" name="Changes" comment="" />
+      <created>1683817475747</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683817475747</updated>
+      <workItem from="1683817478206" duration="97000" />
+      <workItem from="1684096737922" duration="700000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

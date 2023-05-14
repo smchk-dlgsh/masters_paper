@@ -8,8 +8,8 @@ def remove_files_with_extension(directory, extension):
             print(f"Removed {file_path}")
 
 # Specify the directory path and extension
-directory = "/Users/valeriia/stuff/STUDYING/YEAR_6/masters_degree/plain_data"
-extension = ".xlsx"
+directory = "/Users/valeriia/stuff/STUDYING/YEAR_6/masters_degree/RTTMs+WAVs"
+extension = ".TextGrid"
 
 # Call the remove_files_with_extension function
 remove_files_with_extension(directory, extension)
