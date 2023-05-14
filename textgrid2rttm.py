@@ -1,82 +1,37 @@
-#!/usr/bin/env python
-#
-# author = julien karadayi
-#
-# This script converts transcription in Text Grid / Praat format
-# to RTTM format. This is useful for evaluating performances of
-# Speech detection algorithms with the *dscore* package,
-# in the DiarizationVM virtual machine.
-# The 1 and 0 labels are sent to " speech ", and no label / "x" label
-# are not written in output (which means it is described as "non speech")
-
-import os
 import argparse
-# from praatio import tgio
-import tgt # tgt is better thant praatio for our application
-           # because it allows to manipulate the timestamps,
-           # which is something we cannot do with praatio.
-
-
+import tgt 
 
 def textgrid2rttm(textgrid):
-    '''
-        Take in input the path to a text grid,
-        and output a dictionary of lists *{spkr: [ (onset, duration) ]}*
-        that can easily be written in rttm format.
-    '''
-    # init output
     rttm_out = dict()
-
-    # open textgrid
-    #tg = tgio.openTextgrid(textgrid)
     tg = tgt.read_textgrid(textgrid, encoding="utf-8")
 
- 
- 
-
-    # loop over all speakers in this text grid
-    #for spkr in tg.tierNameList:
     for spkr in tg.get_tier_names():
-        print('spkr', spkr)
         speaker_id = tg.get_tier_names().index(spkr)
-        print('speaker_id', speaker_id)
-
         spkr_timestamps = []
-        # loop over all annotations for this speaker
-        #for interval in tg.tierDict[spkr].entryList:
+      
         for _interval in tg.get_tiers_by_name(spkr):
             for interval in _interval:
 
-                bg, ed, label = interval.start_time,\
+                start, end, phrase = interval.start_time,\
                               interval.end_time,\
                               interval.text
-
-                if label == "x":
-                   continue
         
-                spkr_timestamps.append((bg, ed-bg, label, speaker_id))
+                spkr_timestamps.append((start, end-start, phrase, speaker_id))
 
-        # add list of onsets, durations for each speakers
         rttm_out[spkr] = spkr_timestamps
     return rttm_out
 
 
-def write_rttm(rttm_out, basename_whole):
-    '''
-        take a dictionary {spkr:[ (onset, duration) ]} as input
-        and write on rttm output by speaker
-    '''
-    # write one rttm file for the whole wav, indicating
-    # only regions of speech, and not the speaker
-    with open(basename_whole + '.rttm', 'w') as fout:
+def write_rttm(rttm_out, full_file_name):
+    with open(full_file_name + '.rttm', 'w') as fout:
         for spkr in rttm_out:
-            for bg, dur, label, speaker_id in rttm_out[spkr]:
+            for start, dur, phrase, speaker_id in rttm_out[spkr]:
                 fout.write(u'SPEAKER {} 1 {} {} <NA> <NA> {} <NA>\n'
                            .format(
-                    basename_whole.split('/')[-1],
-                    bg,
+                    full_file_name.split('/')[-1],
+                    start,
                     dur,
-                    basename_whole + '-' + str(speaker_id)
+                    full_file_name + '-' + str(speaker_id)
                     ))
 
 
@@ -92,21 +47,3 @@ if __name__ == '__main__':
 
     rttm_out = textgrid2rttm(args.input_file)
     write_rttm(rttm_out, args.output_file)
-    #if not os.path.isdir(args.output_folder_whole):
-    #    os.makedirs(args.output_folder_whole)
-
-    #for fold in os.listdir(args.input_folder):
-    #    for fin in os.listdir(os.path.join(args.input_folder, fold)):
-    #        if not fin.endswith('m1.TextGrid'):
-    #            # read only text grids with full anotation
-    #            # in this folder
-    #            continue
-
-    #        tg_in = os.path.join(args.input_folder, fold, fin)
-    #        basename_whole = os.path.join(args.output_folder_whole,
-    #                                      '_'.join(fin.split('_')[0:3]))
-
-    #        # extract begining/durations of speech intervals
-    #        rttm_out = textgrid2rttm(tg_in)
-    #        # write 1 rttm per spkr transcribed in this text grid
-    #        write_rttm(rttm_out, basename_whole)
